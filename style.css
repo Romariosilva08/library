@@ -1,0 +1,9 @@
+:root {
+    /* RGBA COLOR VARIABLES */
+    --primary-bg-color: rgb(236, 227, 197);
+    --secondary-bg-color: rgba(230, 230, 225, 1);
+    --primary-text-color: rgba(101, 67, 33, 1);
+    --accent-button-color: rgba(144, 176, 126, 1);
+    --secondary-text-color: rgba(200, 200, 200, 1);
+    --highlight-color: rgba(173, 195, 211, 1);
+}
