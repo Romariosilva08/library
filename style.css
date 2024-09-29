@@ -32,7 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
 }
 
 /* Header and footer general styling */
@@ -44,8 +44,11 @@ footer {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-/* header specific styling */
+/* Header specific styling */
 header {
+  position: relative;
+  z-index: 1;
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -85,6 +88,8 @@ header > svg > path {
   border: 0.9px solid var(--primary-text-color);
 
   transition: border 0.3s ease-in-out;
+
+  cursor: pointer;
 }
 
 .plus {
@@ -120,6 +125,9 @@ header > svg > path {
 
 /* Footer specific styling */
 footer {
+  position: relative;
+  z-index: 1;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -149,4 +157,173 @@ footer > a:hover {
   transform: scale(0.9);
   padding: 0 5px 0 5px;
   transition: transform 0.2s, padding 0.2s;
+}
+
+/* BOOK FORM STYLING */
+.form-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  position: absolute;
+  right: -33.3%;
+
+  height: 100%;
+  width: 33.3%;
+
+  transition: right 0.5s ease-out;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  padding: 40px 20px 40px 20px;
+  border-radius: 15px;
+
+  background-color: rgba(144, 176, 126, 0.7);
+
+  position: relative;
+  top: -330px;
+  right: 50px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.form-group:nth-last-of-type(1) {
+  align-self: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+}
+
+label {
+  font-family: "Playfair Display SC";
+  font-size: 1.2rem;
+  margin-bottom: 3px;
+}
+
+input,
+input::placeholder {
+  font-family: "Raleway";
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 300px;
+  padding: 5px;
+
+  border: none;
+  border-radius: 5px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+}
+
+input[type="submit"] {
+  background-color: var(--highlight-color);
+
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+
+  font-family: "Raleway";
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--primary-bg-color);
+
+  cursor: pointer;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: 0.2s;
+}
+
+input[type="submit"]:active {
+  transform: scale(0.9);
+  box-shadow: none;
+}
+
+/* TOGGLE BUTTON STYLING */
+input[type="checkbox"] {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 15px;
+
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+
+  background-color: var(--secondary-bg-color);
+
+  height: 18px;
+  width: 36px;
+
+  transition: 0.5s;
+
+  cursor: pointer;
+}
+
+input:checked[type="checkbox"] {
+  background-color: var(--highlight-color);
+}
+
+input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  background-color: white;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+  transition: 0.5s;
+}
+
+input:checked[type="checkbox"]:before {
+  left: 18px;
+}
+
+/* Instructions box styling */
+#instructions-container {
+  padding: 10px;
+  width: 300px;
+
+  text-align: center;
+
+  position: absolute;
+  top: 5%;
+  right: 1%;
+
+  font-family: "Raleway";
+
+  transition: 0.2s;
+}
+
+#instructions-container svg {
+  position: absolute;
+  height: 20px;
+
+  right: -123%;
+  top: -0.3px;
+
+  transform: rotate(180deg);
 }
