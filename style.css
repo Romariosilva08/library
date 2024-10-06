@@ -12,6 +12,7 @@ Header & footer general styling */
   --accent-button-color: rgba(144, 176, 126, 1);
   --secondary-text-color: rgba(200, 200, 200, 1);
   --highlight-color: rgba(173, 195, 211, 1);
+  --important-color: rgb(245, 140, 140);
 }
 
 /* Margin & padding reset */
@@ -20,12 +21,17 @@ Header & footer general styling */
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
 /* Body element general styling */
 body {
-  width: 100vw;
-  height: 100vh;
   overflow: hidden;
 
+  max-width: 100vw;
+  min-height: 100vh;
+  
   background-color: var(--primary-bg-color);
   color: var(--primary-text-color);
 
@@ -33,6 +39,13 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  overflow-y: scroll;
+}
+
+/* Hide scroll bar */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* Header and footer general styling */
@@ -47,7 +60,7 @@ footer {
 /* Header specific styling */
 header {
   position: relative;
-  z-index: 1;
+  z-index: 1000;
 
   display: flex;
   justify-content: flex-start;
@@ -126,7 +139,9 @@ header > svg > path {
 /* Footer specific styling */
 footer {
   position: relative;
-  z-index: 1;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
 
   display: flex;
   justify-content: center;
@@ -187,8 +202,9 @@ form {
   background-color: rgba(144, 176, 126, 0.7);
 
   position: relative;
-  top: -330px;
-  right: 50px;
+  z-index: 1000;
+  top: -310px;
+  right: 20px;
 
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
@@ -208,9 +224,11 @@ form {
 }
 
 label {
-  font-family: "Playfair Display SC";
+  font-family: "Raleway";
+  font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 3px;
+  color: white;
 }
 
 input,
@@ -243,8 +261,8 @@ input[type="submit"] {
 
   font-family: "Raleway";
   font-size: 1.2rem;
-  font-weight: 900;
-  color: var(--primary-bg-color);
+  font-weight: 800;
+  color: white;
 
   cursor: pointer;
 
@@ -311,11 +329,11 @@ input:checked[type="checkbox"]:before {
 
   position: absolute;
   top: 5%;
-  right: 1%;
+  right: 25.5px;
 
   font-family: "Raleway";
 
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 #instructions-container svg {
@@ -326,4 +344,120 @@ input:checked[type="checkbox"]:before {
   top: -0.3px;
 
   transform: rotate(180deg);
+}
+
+/* BOOK GRID STYLING */
+.book-grid {
+  position: relative;
+  box-sizing: border-box;
+  padding: 3rem;
+
+  flex: 1;
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3rem;
+  z-index: 1;
+}
+
+.book-grid__book {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  box-sizing: border-box;
+  padding: 20px;
+
+  animation: book-fade-out 0.5s ease-out reverse forwards;
+
+  width: 100%;
+  height: 100%;
+
+  font-family: "Raleway";
+  background-color: var(--secondary-bg-color);
+
+  border-radius: 20px;
+
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* BOOK INFO STYLING */
+.book-grid__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-grid__title {
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.book-grid__author {
+  font-weight: 600;
+}
+
+.book-grid__pages {
+  font-size: 0.8rem;
+  align-self: flex-end;
+}
+
+/* Book actions styling */
+.book-grid__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.book-grid__button {
+  box-sizing: border-box;
+  width: 92px;
+  border: none;
+  border-radius: 5px;
+
+  padding: 15px 15px;
+
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+
+  font-family: "Raleway";
+
+  transition: 0.2s;
+
+  cursor: pointer;
+
+  color: white;
+  font-weight: 600;
+}
+
+.book-grid__button:active {
+  scale: 0.9;
+}
+
+/* Status button styling */
+.book-grid__button--status {
+  background-color: var(--highlight-color);
+}
+
+.book-grid__button--status:active {
+  background-color: white;
+  color: var(--highlight-color);
+}
+
+/* Delete book button styling */
+.book-grid__button--delete {
+  background-color: var(--important-color);
+}
+
+@keyframes book-fade-out {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    -webkit-filter: blur(0);
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+    -webkit-filter: blur(10px);
+  }
 }
